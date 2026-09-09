@@ -1,0 +1,1 @@
+# adipa-malla-curricular
