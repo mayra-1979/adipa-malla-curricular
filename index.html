@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADIPA · Entrega de malla curricular</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <h1>ADIPA · Entrega de malla curricular</h1>
+  <p>Demo del flujo: solicitud del alumno → validación → búsqueda → respuesta (datos de ejemplo)</p>
+</header>
+
+<main>
+
+  <!-- 1. Bandeja de solicitudes -->
+  <section id="view-bandeja" class="view active">
+    <div class="card">
+      <h2>Bandeja de solicitudes</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Canal</th>
+            <th>Alumno/a</th>
+            <th>Diplomado solicitado</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="bandeja-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 2. Detalle de la solicitud + 3. Alerta de datos incompletos -->
+  <section id="view-detalle" class="view">
+    <div class="card">
+      <h2>Detalle de la solicitud</h2>
+      <div class="field"><label>Canal</label><div class="value" id="detalle-canal"></div></div>
+      <div class="field"><label>Alumno/a</label><div class="value" id="detalle-alumno"></div></div>
+      <div class="field"><label>Correo indicado</label><div class="value" id="detalle-correo"></div></div>
+      <div class="field"><label>Diplomado/postítulo indicado</label><div class="value" id="detalle-diplomado"></div></div>
+
+      <div id="detalle-alerta" class="alert" style="display:none"></div>
+
+      <div class="row">
+        <button class="primary" id="btn-validar">Validar datos</button>
+        <button class="secondary" id="btn-solicitar-de-nuevo">Solicitar de nuevo (volver a bandeja)</button>
+        <button class="link" id="btn-volver-bandeja-detalle">← Volver a la bandeja</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Buscador de malla curricular -->
+  <section id="view-malla" class="view">
+    <div class="card">
+      <h2>Malla curricular encontrada</h2>
+      <p class="muted">Programa: <strong id="malla-diplomado-nombre"></strong></p>
+      <div id="malla-items"></div>
+      <div class="row">
+        <button class="primary" id="btn-generar-preview">Armar en plantilla Modelo →</button>
+        <button class="link" id="btn-volver-malla">← Volver al detalle</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Vista previa de la malla (plantilla Modelo) -->
+  <section id="view-preview" class="view">
+    <div class="card">
+      <h2>Vista previa · Plantilla Modelo</h2>
+      <div class="preview-doc" id="preview-doc"></div>
+      <div class="row" style="margin-top:16px">
+        <button class="primary" id="btn-enviar">Enviar respuesta al alumno</button>
+        <button class="link" id="btn-volver-preview">← Volver a la malla</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Confirmación de respuesta enviada -->
+  <section id="view-confirmacion" class="view">
+    <div class="card success">
+      <div class="icon">✅</div>
+      <h2>Respuesta enviada</h2>
+      <p>La malla curricular fue enviada al alumno por: <strong id="confirmacion-canal"></strong></p>
+      <p class="muted">La solicitud quedó marcada como "Respondido" en la bandeja.</p>
+      <button class="primary" id="btn-finalizar">Volver a la bandeja</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
